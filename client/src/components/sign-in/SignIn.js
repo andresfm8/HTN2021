@@ -9,7 +9,7 @@ export default function SignInComponent () {
 			<h4 className="texl-xl text-white">To create a session, please login with spotify</h4>
 			<br />
 			<div className="">
-				<a className="spotify-button px-10 py-5 rounded-full text-white bg-green-spotify" href={loginUrl}>
+				<a className="spotify-button px-10 py-5 rounded-full text-white bg-green-spotify" href='http://localhost:4000/auth/spotify'>
 					Continue with Spotify
 				</a>
 			</div>

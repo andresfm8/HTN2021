@@ -7,12 +7,22 @@ import axios from 'axios';
 const DashboardPage = ({ code }) => {
 	const [ accessToken, setAccessToken ] = useState('');
 
+	let search = window.location.search;
+	let params = new URLSearchParams(search);
+
+	let access = params.get('access');
+	let refresh = params.get('refresh');
+
+	// console.log(access);
+	// console.log(refresh);
 	useEffect(() => {
-		axios.post('http://localhost:4000/login', { code }).then((res) => res.json).then((res) => console.log(res));
-	}, []);
+		if (access) localStorage.setItem('access', access);
+		if (refresh) localStorage.setItem('refresh', refresh);
+	});
+
 	return (
 		<div>
-			<SearchBox placeholder="Search songs..." />
+			{/* <SearchBox placeholder="Search songs..." /> */}
 			DASHBOARD PAGE HERE!
 			{code}
 			<CustomButton />

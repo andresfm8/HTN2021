@@ -43,6 +43,9 @@ passport.deserializeUser(function (obj, done) {
 	done(null, obj);
 });
 
+var access_token;
+var refresh_token;
+
 passport.use(
 	new SpotifyStrategy(
 		{
@@ -60,7 +63,10 @@ passport.use(
 					refresh_token : refreshToken
 				};
 
-				await user_actions.create_user(formData)
+				access_token = accessToken;
+				refresh_token = refreshToken;
+
+				await user_actions.create_user(formData);
 				return done(null, profile);
 			});
 		}
@@ -80,7 +86,7 @@ app.get(
 
 app.get('/auth/spotify/callback', passport.authenticate('spotify', { failureRedirect: '/login' }), function (req, res) {
 	// Successful authentication, redirect home.
-	res.redirect('/');
+	res.redirect(`http://localhost:3000/dashboard?access=${access_token}&refresh=${refresh_token}`);
 });
 
 app.get('/logout', function (req, res) {
