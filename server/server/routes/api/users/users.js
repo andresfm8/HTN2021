@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router;
 const actions = require('../../../controllers/users/actions');
 
+// all endpoints are prefixed with '/api'
+
 router.get('/users', async (req, res) => {
 	try {
 		const response = await actions.get_users();
