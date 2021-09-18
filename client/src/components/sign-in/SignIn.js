@@ -3,6 +3,7 @@ import { loginUrl } from './spotify';
 
 export default function SignInComponent () {
 	return (
+
 		<div clasName="flex justify-center">
 			<h1 className="text-5xl text-white">Placeholder</h1>
 			<h4 className="texl-xl text-white">To create a session, please login with spotify</h4>
@@ -12,6 +13,7 @@ export default function SignInComponent () {
 					Continue with Spotify
 				</a>
 			</div>
+
 		</div>
 	);
 }

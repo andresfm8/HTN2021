@@ -24,6 +24,7 @@ const App = () => {
 					<Route exact path="/dashboard" component={DashboardPage} />
 				</Switch>
 			)}
+
 		</div>
 	);
 };
