@@ -64,6 +64,7 @@ passport.use(
 			process.nextTick(function () {
 				console.log(profile);
 				console.log(accessToken);
+				console.log(expires_in);
         return done(null, profile);
       });
 		}
