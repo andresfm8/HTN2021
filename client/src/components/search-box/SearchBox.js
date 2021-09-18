@@ -20,7 +20,6 @@ const SearchBox = ({ placeholder }) => {
     //Show error msg, maybe create error component
   }
 
-
   return (
     <div>
       <input
