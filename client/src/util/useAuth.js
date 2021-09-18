@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export default function useAuth (code) {
-	const [ accessToken, setAccessToken ] = useState();
+	const [ accessToken, setAccessToken ] = useState('');
 
 	useEffect(
 		() => {
@@ -11,7 +11,7 @@ export default function useAuth (code) {
 				.then((response) => {
 					window.history.pushState({}, null, '/');
 					console.log(response.data);
-					setAccessToken(response.data.accessToken);
+					setAccessToken(response.data['access_token']);
 				})
 				.catch((err) => {
 					console.log(err);

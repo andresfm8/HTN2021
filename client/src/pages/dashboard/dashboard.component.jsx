@@ -12,12 +12,15 @@ const DashboardPage = ({ code }) => {
   const accessToken = useAuth(code);
 
   useEffect(() => {
-    if(!accessToken) return;
+    if(!accessToken) {
+        console.log('?');
+        return;      
+    };
 
     spotifyApi.setAccessToken(accessToken);
 
     spotifyApi.getMe().then(data => {
-      console.log(data);
+      console.log(data.body);
     })
   }, [accessToken])
   return (
