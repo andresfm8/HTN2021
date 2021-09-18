@@ -4,7 +4,7 @@ export default function SignInComponent () {
 	return (
 		<div>
 			SIGN IN WITH SPOTIFY<br />
-			<a>Click here to sign in</a>
+			<a href="http://localhost:4000/login">Click here to sign in</a>
 		</div>
 	);
 }
