@@ -6,6 +6,11 @@ async function get_user (id) {
 	return response;
 }
 
+async function get_users () {
+	const response = await User.findAll();
+	return response;
+}
+
 async function create_user (data) {
 	const id = uniqid();
 	const name = data.name;
@@ -24,4 +29,4 @@ async function create_user (data) {
 	};
 }
 
-module.exports = { get_user, create_user };
+module.exports = { get_user, create_user, get_users };
