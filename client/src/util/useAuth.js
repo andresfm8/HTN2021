@@ -13,8 +13,9 @@ export default function useAuth (code) {
 					console.log(response.data);
 					setAccessToken(response.data.accessToken);
 				})
-				.catch(() => {
-					window.location = '/';
+				.catch((err) => {
+					console.log(err);
+					// window.location = '/';
 				});
 		},
 		[ code ]

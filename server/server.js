@@ -19,10 +19,11 @@ app.use(express.json());
 const credentials = {
 	clientId     : process.env.CLIENT_ID,
 	clientSecret : process.env.CLIENT_SECRET,
-	redirectUrl  : 'http://localhost:3000'
+	redirectUri  : 'http://localhost:3000/'
 };
 
 app.post('/login', (req, res) => {
+
 	let spotify = new spotifyWebAPI(credentials);
 	const code = req.body.code;
 
@@ -43,19 +44,19 @@ app.listen(4000, () => {
 	console.log('Listening on 4000');
 });
 
-var sequelize = new Sequelize({
-	dialect        : 'postgres',
-	username       : process.env.USERNAME,
-	password       : process.env.PASSWORD,
-	host           : process.env.DB_HOST,
-	port           : process.env.DB_PORT,
-	database       : process.env.DATABASE,
-	dialectOptions : {
-		ssl : {
-			rejectUnauthorized : false,
-			// For secure connection:
-			ca                 : fs.readFileSync('certs/root.crt').toString()
-		}
-	},
-	logging        : false
-});
+// var sequelize = new Sequelize({
+// 	dialect        : 'postgres',
+// 	username       : process.env.USERNAME,
+// 	password       : process.env.PASSWORD,
+// 	host           : process.env.DB_HOST,
+// 	port           : process.env.DB_PORT,
+// 	database       : process.env.DATABASE,
+// 	dialectOptions : {
+// 		ssl : {
+// 			rejectUnauthorized : false,
+// 			// For secure connection:
+// 			ca                 : fs.readFileSync('certs/root.crt').toString()
+// 		}
+// 	},
+// 	logging        : false
+// });
