@@ -10,7 +10,7 @@ const SearchBox = ({ placeholder }) => {
     setQuery(e.target.value);
   };
 
-  const { data, error, isLoading } = useFetch('ENDPOINTHERE', 'GET', query);
+  const { data, error, isLoading } = useFetch('ENDPOINTHERE', 'POST', query);
 
   if (isLoading) {
     //Spinner if we have time

@@ -17,6 +17,7 @@ const useFetch = (url, method, query) => {
       const fetchData = async () => {
         console.log(options);
         setIsLoading(true);
+        //Needs to be refactored to post request.
         try {
           const res = await axios.request(options);
           const data = await res.json();
@@ -29,6 +30,7 @@ const useFetch = (url, method, query) => {
       }
       fetchData();
   }, [query]);
+  // No need to return data anymore
   return { data, error, isLoading };
 } 
 
