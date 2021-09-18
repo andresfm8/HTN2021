@@ -1,22 +1,12 @@
-const sequelize = require('../../server');
-const Sequelize = require('sequelize-cockroachdb');
+const mongoose = require('mongoose');
 
-
-const Session = sequelize.define('sessions', {
-	session_id : {
-		type : Sequelize.STRING
-	},
-	queue      : {
-		type : Sequelize.ARRAY(Sequelize.STRING)
-	},
-	host_id    : {
-		type : Sequelize.INTEGER
-	},
-	size       : {
-		type : Sequelize.INTEGER
-	}
+const SessionSchema = new mongoose.Schema({
+	id      : String,
+	queue   : [ String ],
+	host_id : String,
+	size    : Number
 });
 
-Session.sync();
+const Session = mongoose.model('Session', SessionSchema);
 
 module.exports = Session;
