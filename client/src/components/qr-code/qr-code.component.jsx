@@ -11,8 +11,10 @@ const QRCodeGenerate = ({link}) => {
   }, [])
   return (
     <div>
-      QR Code Setup here
+      QR Code:
       <img src={src} />
+      Link: 
+      {link}
     </div>
   )
 }
