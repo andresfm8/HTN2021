@@ -1,5 +1,6 @@
 const User = require('../../models/User');
 const uniqid = require('uniqid');
+
 async function get_user (id) {
 	const response = await User.findOne({ where: { id: id } });
 	return response;
@@ -18,7 +19,8 @@ async function create_user (data) {
 
 	return {
 		status : 'success',
-		id     : id
+		id     : id,
+		user   : user
 	};
 }
 
