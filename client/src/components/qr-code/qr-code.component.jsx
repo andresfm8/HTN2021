@@ -8,12 +8,12 @@ const QRCodeGenerate = ({link}) => {
     QRCode.toDataURL(link).then((data) => {
       setSrc(data);
     })
-  }, [])
+  }, [link]);
   return (
     <div>
       QR Code:
       <img src={src} />
-      Link: 
+      Link: <br/>
       {link}
     </div>
   )
