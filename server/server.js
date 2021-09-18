@@ -1,7 +1,11 @@
 const express = require('express');
 const app = express();
 const spotifyAPI = require('spotify-web-api-node');
-const dotenv = require('dotenv');
+const Sequelize = require("sequelize-cockroachdb");
+const fs = require('fs');
+
+require('dotenv').config();
+
 const scopes = [
 	'user-read-private',
 	'user-read-email',
@@ -27,3 +31,22 @@ const main = require('./server/routes/main/main');
 app.use('/', main);
 
 app.listen(4000, () => console.log('Listening on 4000'));
+
+
+var sequelize = new Sequelize({
+	dialect: "postgres",
+	username: process.env.USERNAME,
+	password: process.env.PASSWORD ,
+	host: process.env.DB_HOST,
+	port: process.env.DB_PORT,
+	database: process.env.DATABASE,
+	dialectOptions: {
+	  ssl: {
+		rejectUnauthorized: false,
+		// For secure connection:
+		ca: fs.readFileSync('certs/root.crt')
+				  .toString()
+	  },
+	},
+	logging: false,
+  });
