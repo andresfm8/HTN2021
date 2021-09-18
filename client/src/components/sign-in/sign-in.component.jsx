@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { loginUrl } from "./spotify";
 
 const SignIn = () => {
   // http://localhost:4000/login GET
@@ -6,11 +7,11 @@ const SignIn = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const requestAuth = () => {
+  const requestAuth = async () => {
     setIsLoading(true);
     try {
-      const resp = await fetch(url, options);
-      const data = await resp.json();
+      // const resp = await fetch(url, options);
+      // const data = await resp.json();
       setData(data);
     } catch (e) {
       setData([]);
@@ -31,7 +32,10 @@ const SignIn = () => {
     <div>
       {data ? data : "nope"}
 
-      <div onClick={() => requestAuth()}>SPOTIFY SIGNIN HERE</div>
+      <div>
+            <img src="https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg" alt="Spotify-Logo"/>
+            <a href={loginUrl}>LOGIN WITH SPOTIFY</a>
+        </div>
     </div>
   )
 }
