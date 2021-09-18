@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
+require('dotenv').config();
+
 const spotifyAPI = require('spotify-web-api-node');
-const dotenv = require('dotenv');
 const scopes = [
 	'user-read-private',
 	'user-read-email',
