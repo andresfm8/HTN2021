@@ -6,6 +6,11 @@ const request = require('request');
 require('dotenv').config();
 
 const spotifyAPI = require('spotify-web-api-node');
+const Sequelize = require("sequelize-cockroachdb");
+const fs = require('fs');
+
+require('dotenv').config();
+
 const scopes = [
 	'user-read-private',
 	'user-read-email',
@@ -82,4 +87,21 @@ app.get('/refresh_token', (req, res) => {
 
 app.listen(4000, () => console.log('Listening on 4000'));
 
-module.exports = spotify;
+
+var sequelize = new Sequelize({
+	dialect: "postgres",
+	username: process.env.USERNAME,
+	password: process.env.PASSWORD ,
+	host: process.env.DB_HOST,
+	port: process.env.DB_PORT,
+	database: process.env.DATABASE,
+	dialectOptions: {
+	  ssl: {
+		rejectUnauthorized: false,
+		// For secure connection:
+		ca: fs.readFileSync('certs/root.crt')
+				  .toString()
+	  },
+	},
+	logging: false,
+  });
