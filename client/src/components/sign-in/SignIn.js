@@ -1,4 +1,5 @@
 import React from 'react';
+import { loginUrl } from './spotify';
 
 export default function SignInComponent () {
 	return (
@@ -7,9 +8,9 @@ export default function SignInComponent () {
 			<h4 className="texl-xl text-white">To create a session, please login with spotify</h4>
 			<br />
 			<div className="">
-				<button className="spotify-button px-10 py-5 rounded-full text-white bg-green-spotify">
+				<a className="spotify-button px-10 py-5 rounded-full text-white bg-green-spotify" href={loginUrl}>
 					Continue with Spotify
-				</button>
+				</a>
 			</div>
 		</div>
 	);

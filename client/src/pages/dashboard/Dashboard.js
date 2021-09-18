@@ -1,7 +1,7 @@
+import React from 'react';
 import { useEffect } from 'react';
 import CustomButton from '../../components/custom-button/CustomButton';
 import SearchBox from '../../components/search-box/SearchBox';
-
 
 const DashboardPage = ({ code }) => {
 	return (
