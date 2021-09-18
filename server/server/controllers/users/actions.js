@@ -19,6 +19,21 @@ async function create_user (data) {
 	const token = data.token;
 	const refresh_token = data.refresh_token;
 
+	const check_name = await User.findOne({ name: name }).lean().exec();
+
+	if (check_name) {
+		const token = data.token;
+		const refresh_token = data.refresh_token;
+
+		const res = await User.updateOne({ name: name }, { token: token, refresh_token: refresh_token }).lean().exec();
+
+		return {
+			id            : check_name.id,
+			token,
+			refresh_token
+		};
+	}
+
 	const user = await User.create({
 		id            : id,
 		name          : name,
@@ -29,9 +44,9 @@ async function create_user (data) {
 	});
 
 	return {
-		status : 'success',
-		id     : id,
-		user   : user
+		id,
+		token,
+		refresh_token
 	};
 }
 

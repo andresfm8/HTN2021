@@ -9,6 +9,8 @@ const fs = require('fs');
 const passport = require('passport');
 const SpotifyStrategy = require('passport-spotify').Strategy;
 const uri = require('./config');
+// const fetch = require('node-fetch');
+const user_actions = require('./server/controllers/users/actions');
 
 mongoose.connect(uri, {
 	useNewUrlParser : true
@@ -24,6 +26,9 @@ require('dotenv').config();
 
 app.use(cors());
 app.use(express.json());
+
+//
+const api = require('./server/routes/api/main');
 
 app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 
@@ -46,7 +51,7 @@ passport.use(
 			callbackURL  : 'http://localhost:4000/auth/spotify/callback'
 		},
 		function (accessToken, refreshToken, expires_in, profile, done) {
-			process.nextTick(function () {
+			process.nextTick(async function () {
 				let formData = {
 					name          : profile.displayName,
 					spotify_id    : profile.id,
@@ -55,32 +60,7 @@ passport.use(
 					refresh_token : refreshToken
 				};
 
-				request.post({ url: 'http://localhost:4000/api/users/create', form: formData }, function (
-					err,
-					httpResponse,
-					body
-				) {
-					if (err) console.error(err);
-					console.log(body);
-				});
-
-				// request
-				// 	.post({
-				// 		url      : '/api/users/create',
-				// 		formData : {
-				// 			name          : profile.displayName,
-				// 			spotify_id    : profile.id,
-				// 			email         : profile.emails,
-				// 			token         : accessToken,
-				// 			refresh_token : refreshToken
-				// 		}
-				// 	})
-				// 	// .then((res) => res.json())
-				// 	// .then((res) => console.log(res));
-				// console.log(profile.displayName);
-				// console.log(accessToken);
-				// console.log(refreshToken);
-				// console.log(expires_in);
+				await user_actions.create_user(formData)
 				return done(null, profile);
 			});
 		}
@@ -88,6 +68,7 @@ passport.use(
 );
 
 app.get('/', (req, res) => res.send('home'));
+app.use('/', api);
 
 app.get(
 	'/auth/spotify',

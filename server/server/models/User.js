@@ -4,7 +4,7 @@ const UserSchema = new mongoose.Schema({
 	id            : String,
 	name          : String,
 	spotify_id    : String,
-	email         : String,
+	email         : mongoose.Schema.Types.Mixed,
 	sesion_id     : String,
 	token         : String,
 	refresh_token : String
