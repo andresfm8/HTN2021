@@ -7,6 +7,8 @@ import SessionSelectionPage from './pages/session-selection/SessionSelection';
 import Landing from './pages/landing/Landing';
 import SignIn from './pages/signin/SignIn';
 
+const code = new URLSearchParams(window.location.search).get('code');
+
 const App = () => {
 	return (
 		<div>			
