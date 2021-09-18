@@ -23,7 +23,6 @@ const credentials = {
 };
 
 app.post('/login', (req, res) => {
-
 	let spotify = new spotifyWebAPI(credentials);
 	const code = req.body.code;
 
