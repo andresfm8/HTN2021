@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const SignIn = () => {
+const Landing = () => {
 	// http://localhost:4000/login GET
 	const [ data, setData ] = useState(null);
 	const [ error, setError ] = useState(null);
@@ -29,10 +29,10 @@ const SignIn = () => {
 
 	return (
 		<div>
-			<button>Host a session</button>
-			<button>Join a session</button>
+			<a href="/signin">Host a session</a>
+			<a href="/sessions">Join a session</a>
 		</div>
 	);
 };
 
-export default SignIn;
+export default Landing;

@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-export default function signin_component() {
-    return (
-        <div>
-            SIGN IN WITH SPOTIFY
-        </div>
-    )
+export default function SignInComponent () {
+	return (
+		<div>
+			SIGN IN WITH SPOTIFY<br />
+			<a>Click here to sign in</a>
+		</div>
+	);
 }
