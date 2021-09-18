@@ -1,7 +1,5 @@
 import { useEffect } from 'react';
 import CustomButton from '../../components/custom-button/CustomButton';
-import SpotifyWebApi from 'spotify-web-api-node';
-import client_id from '../../config';
 import SearchBox from '../../components/search-box/SearchBox';
 
 
