@@ -16,21 +16,6 @@ require('dotenv').config();
 app.use(cors());
 app.use(express.json());
 
-app.get('/login', (req, res) => {
-	var scopes = 'user-read-private user-read-email user-modify-playback-state';
-	var callback_url = 'http://localhost:3000';
-
-	res.redirect(
-		'https://accounts.spotify.com/authorize' +
-			'?response_type=code' +
-			'&client_id=' +
-			process.env.CLIENT_ID +
-			(scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
-			'&redirect_uri=' +
-			encodeURIComponent(callback_url)
-	);
-});
-
 app.listen(4000, () => {
 	console.log('Listening on 4000');
 });
