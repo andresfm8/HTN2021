@@ -1,5 +1,6 @@
 import React from 'react';
 import SignInComponent from '../../components/sign-in/SignIn';
+import Image from './Illustration.png';
 export default function SignIn () {
 	return (
 		<div className="flex flex-wrap h-screen bg-gradient-to-r from-blue-dark to-blue-light">
@@ -10,6 +11,7 @@ export default function SignIn () {
 				<div className="ml-6 lg:ml-40">
 					<SignInComponent />
 				</div>
+				<img src={Image} className="hidden md:inline-flex" />
 			</div>
 		</div>
 	);
