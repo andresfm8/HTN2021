@@ -2,7 +2,11 @@ module.exports = {
 	purge    : [ './src/**/*.{js,jsx,ts,tsx}', './public/index.html' ],
 	darkMode : false, // or 'media' or 'class'
 	theme    : {
-		extend : {},
+		extend : {
+			outline: {
+				white: '2px solid #FFFFFF'
+			}
+		},
 		colors : {
 			green : {
 				spotify : '#1DB954'
