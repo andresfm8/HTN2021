@@ -2,12 +2,12 @@ const User = require('../../models/User');
 const uniqid = require('uniqid');
 
 async function get_user (id) {
-	const response = await User.findOne({ where: { id: id } });
+	const response = await User.findOne({ id: id });
 	return response;
 }
 
 async function get_users () {
-	const response = await User.findAll();
+	const response = await User.find({});
 	return response;
 }
 
@@ -18,9 +18,15 @@ async function create_user (data) {
 	const email = data.email;
 	const token = data.token;
 	const refresh_token = data.refresh_token;
-	const session_id = data.session_id;
 
-	const user = User.build({ id, name, spotify_id, email, token, refresh_token, session_id });
+	const user = await User.create({
+		id            : id,
+		name          : name,
+		spotify_id    : spotify_id,
+		email         : email,
+		token         : token,
+		refresh_token : refresh_token
+	});
 
 	return {
 		status : 'success',
