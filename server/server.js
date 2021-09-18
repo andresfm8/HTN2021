@@ -17,9 +17,6 @@ require('dotenv').config();
 app.use(cors());
 app.use(express.json());
 
-app.listen(4000, () => {
-	console.log('Listening on 4000');
-});
 
 app.use(
   session({secret: 'keyboard cat', resave: true, saveUninitialized: true})
@@ -93,6 +90,10 @@ app.get(
 app.get('/logout', function (req, res) {
   req.logout();
   res.redirect('/');
+});
+
+app.listen(4000, () => {
+	console.log('Listening on 4000');
 });
 
 module.exports = sequelize;
