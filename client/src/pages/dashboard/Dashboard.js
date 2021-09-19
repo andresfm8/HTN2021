@@ -1,12 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+
 import CustomButton from '../../components/custom-button/CustomButton';
 import SearchBox from '../../components/search-box/SearchBox';
-
-import { songList } from './songData';
 import Song from '../../components/song/Song';
 import RequestList from '../../components/request-list/RequestList';
-
+import RequestContainer from '../../components/request-container/RequestContainer';
 
 const DashboardPage = ({ code }) => {
 	const [ accessToken, setAccessToken ] = useState('');
@@ -30,8 +29,7 @@ const DashboardPage = ({ code }) => {
 			DASHBOARD PAGE HERE!
 			{code}
 			<CustomButton />
-			{/* <Song isRequest={false}/> */}
-			<RequestList songList={songList}/>
+			<RequestContainer />
 
 		</div>
 	);

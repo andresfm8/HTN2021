@@ -1,6 +1,6 @@
 import Doggo from '../../assets/happydoggo.jpg';
 
-export const songList =  [
+const songList =  [
 		{
 			order: 1,
 			photo: Doggo,
@@ -41,4 +41,6 @@ export const songList =  [
 			album: "Album Name",
 			duration: "1:45"
 		}
-]
+];
+
+export default songList;
