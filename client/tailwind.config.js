@@ -12,8 +12,9 @@ module.exports = {
 				spotify : '#1DB954'
 			},
 			blue  : {
-				light : '#0D1A8E',
-				dark  : '#13043F'
+				light   : '#0D1A8E',
+				dark    : '#13043F',
+				request : '#2A2A8C'
 			},
 			white : '#FFFFFF'
 		}

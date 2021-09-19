@@ -1,11 +1,11 @@
 import Song from "../song/Song"
 
-const SongRequest = () => {
+const SongRequestItem = ({song}) => {
   return (
-    <div>
-      <Song isRequest={true}/>
+    <div className="bg-blue-request">
+      <Song isRequest={true} song={song}/>
     </div>
   )
 }
 
-export default SongRequest
+export default SongRequestItem
