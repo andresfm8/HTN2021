@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router;
+const router = express.Router();
 const actions = require('../../../controllers/users/actions');
 
 // all endpoints are prefixed with '/api'
@@ -25,7 +25,10 @@ router.get('/users/:id', async (req, res) => {
 
 router.post('/users/create', async (req, res) => {
 	try {
+		console.log(req);
 		const data = req.body.data;
+
+		// console.log(data);
 
 		const response = await actions.create_user(data);
 		res.status(201).json(response);

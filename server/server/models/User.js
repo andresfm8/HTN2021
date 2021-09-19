@@ -1,32 +1,15 @@
-const sequelize = require('../../server');
-const Sequelize = require('sequelize-cockroachdb');
+const mongoose = require('mongoose');
 
-
-const User = sequelize.define('users', {
-	id            : {
-		type       : Sequelize.INTEGER,
-		primaryKey : true
-	},
-	name          : {
-		type : Sequelize.STRING
-	},
-	spotify_id    : {
-		type : Sequelize.STRING
-	},
-	email         : {
-		type : Sequelize.STRING
-	},
-	session_id    : {
-		type : Sequelize.STRING
-	},
-	token         : {
-		type : Sequelize.STRING
-	},
-	refresh_token : {
-		type : Sequelize.STRING
-	}
+const UserSchema = new mongoose.Schema({
+	id            : String,
+	name          : String,
+	spotify_id    : String,
+	email         : mongoose.Schema.Types.Mixed,
+	sesion_id     : String,
+	token         : String,
+	refresh_token : String
 });
 
-User.sync();
+const User = mongoose.model('User', UserSchema);
 
 module.exports = User;
