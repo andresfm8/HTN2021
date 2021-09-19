@@ -3,9 +3,10 @@ import { useState, useEffect } from 'react';
 import CustomButton from '../../components/custom-button/CustomButton';
 import SearchBox from '../../components/search-box/SearchBox';
 
+import { songList } from './songData';
 import Song from '../../components/song/Song';
 import RequestList from '../../components/request-list/RequestList';
-import Doggo from '../../assets/happydoggo.jpg';
+
 
 const DashboardPage = ({ code }) => {
 	const [ accessToken, setAccessToken ] = useState('');
@@ -22,30 +23,6 @@ const DashboardPage = ({ code }) => {
 		if (access) localStorage.setItem('access', access);
 		if (refresh) localStorage.setItem('refresh', refresh);
 	});
-
-	const songList = [
-		{
-			photo: Doggo,
-			title: "Oxytocin",
-			artist: "Billie Eilish",
-			album: "Album Name",
-			duration: "1:45"
-		}, 
-		{
-			photo: Doggo,
-			title: "Oxytocin",
-			artist: "Billie Eilish",
-			album: "Album Name",
-			duration: "1:45"
-		}, 
-		{
-			photo: Doggo,
-			title: "Oxytocin",
-			artist: "Billie Eilish",
-			album: "Album Name",
-			duration: "1:45"
-		}
-	]
 
 	return (
 		<div className="container mx-auto">

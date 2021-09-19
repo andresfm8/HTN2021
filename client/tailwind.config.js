@@ -16,6 +16,10 @@ module.exports = {
 				dark    : '#13043F',
 				request : '#2A2A8C'
 			},
+			gray   : {
+				artist  : '#B3B3B3',
+				album  : '#B4B3B3'
+			},
 			white : '#FFFFFF'
 		}
 	},
