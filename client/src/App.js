@@ -6,7 +6,7 @@ import DashboardPage from './pages/dashboard/Dashboard';
 import SessionSelectionPage from './pages/session-selection/SessionSelection';
 import Landing from './pages/landing/Landing';
 import SignIn from './pages/signin/SignIn';
-
+import SessionCreate from './pages/session-create/SessionCreate'
 const code = new URLSearchParams(window.location.search).get('code');
 
 const App = () => {
@@ -22,6 +22,7 @@ const App = () => {
 					<Route exact path="/signin" component={SignIn} />
 					<Route exact path="/sessions" component={SessionSelectionPage} />
 					<Route exact path="/dashboard" component={DashboardPage} />
+					<Route exact path="/startsession" component={SessionCreate} />	
 				</Switch>
 			)}
 
