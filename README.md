@@ -19,7 +19,9 @@ Our Stack:
 # Features
 
 ### Feature Overview
-
+- Create and Host a Music Session with a live Queue
+- Join a Music Session and Requests Songs to the Queue
+- Scan a Barcode or Click a Link to Join a Session
 
 ## Getting Started
 
