@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-
+import { Link } from 'react-router-dom';
 const Landing = () => {
 	// http://localhost:4000/login GET
 	const [ data, setData ] = useState(null);
@@ -28,9 +28,17 @@ const Landing = () => {
 	}
 
 	return (
-		<div>
-			<a href="/signin">Host a session</a>
-			<a href="/sessions">Join a session</a>
+		<div className="flex justify-between w-2/6 pl-0">
+		   <Link to="/sessions">
+    	   <button type="button" className="border-white hover:bg-blue-button text-white font-bold py-2 px-4 rounded-full w-44 border-2">
+          		JOIN A SESSION
+   		    </button>
+ 			</Link>
+			<Link to="/signin">
+    	    <button type="button" className="border-white hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-44 border-2">
+          		CREATE SESSION
+   		   </button>
+ 			</Link>		
 		</div>
 	);
 };
