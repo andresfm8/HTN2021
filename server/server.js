@@ -6,8 +6,7 @@ const request = require("request");
 const cors = require("cors");
 const fs = require("fs");
 const passport = require("passport");
-const SpotifyStrategy = require("passport-spotify").Strategy;
-const user_actions = require("./server/controllers/users/actions");
+const { setSpotifyAuth } = require("./server/services/auth/spotify-service");
 require("dotenv").config();
 
 mongoose.connect(process.env.CONNECTION_URL, {
@@ -41,66 +40,9 @@ passport.deserializeUser(function (obj, done) {
   done(null, obj);
 });
 
-var access_token;
-var refresh_token;
+setSpotifyAuth();
 
-passport.use(
-  new SpotifyStrategy(
-    {
-      clientID: process.env.CLIENT_ID,
-      clientSecret: process.env.CLIENT_SECRET,
-      callbackURL: "http://localhost:4000/auth/spotify/callback",
-    },
-    function (accessToken, refreshToken, expires_in, profile, done) {
-      process.nextTick(async function () {
-        let formData = {
-          name: profile.displayName,
-          spotify_id: profile.id,
-          email: profile.emails,
-          token: accessToken,
-          refresh_token: refreshToken,
-        };
-
-        access_token = accessToken;
-        refresh_token = refreshToken;
-
-        await user_actions.create_user(formData);
-        return done(null, profile);
-      });
-    }
-  )
-);
-
-app.get("/", (req, res) => res.send("home"));
 app.use("/", api);
-
-app.get(
-  "/auth/spotify",
-  passport.authenticate("spotify", {
-    scope: [
-      "user-read-email",
-      "user-read-private",
-      "user-modify-playback-state",
-    ],
-    showDialog: true,
-  })
-);
-
-app.get(
-  "/auth/spotify/callback",
-  passport.authenticate("spotify", { failureRedirect: "/login" }),
-  function (req, res) {
-    // Successful authentication, redirect home.
-    res.redirect(
-      `http://localhost:3000/dashboard?access=${access_token}&refresh=${refresh_token}`
-    );
-  }
-);
-
-app.get("/logout", function (req, res) {
-  req.logout();
-  res.redirect("/");
-});
 
 app.listen(4000, () => {
   console.log("Listening on 4000");

@@ -10,20 +10,34 @@ async function get_users () {
 	const response = await User.find({});
 	return response;
 }
+// const setProfileData = async (profile, accessToken, refreshToken) => {
+//   let formData = {
+//     name: profile.displayName,
+//     spotify_id: profile.id,
+//     email: profile.emails,
+//     token: accessToken,
+//     refresh_token: refreshToken,
+//   };
 
-async function create_user (data) {
+//   access_token = accessToken;
+//   refresh_token = refreshToken;
+
+//   await user_actions.create_user(formData);
+// }
+
+async function create_user (profile, accessToken, refreshToken) {
 	const id = uniqid();
-	const name = data.name;
-	const spotify_id = data.spotify_id;
-	const email = data.email;
-	const token = data.token;
-	const refresh_token = data.refresh_token;
+	const name = profile.name;
+	const spotify_id = profile.spotify_id;
+	const email = profile.email;
+	const token = accessToken;
+	const refresh_token = refreshToken;
 
 	const check_name = await User.findOne({ name: name }).lean().exec();
 
 	if (check_name) {
-		const token = data.token;
-		const refresh_token = data.refresh_token;
+		const token = profile.token;
+		const refresh_token = profile.refresh_token;
 
 		const res = await User.updateOne({ name: name }, { token: token, refresh_token: refresh_token }).lean().exec();
 
